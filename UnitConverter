@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Double convert = Double.parseDouble((input.getText().toString()));
                     textView.setText(String.valueOf(String.format("%.2f", (Double.parseDouble(input.getText().toString())*33.8)) + " Fahrenheit"));
-                    textView2.setText(String.valueOf(String.format("%.2f", (Double.parseDouble(input.getText().toString())*273.15)) + " Kelvin"));
+                    textView2.setText(String.valueOf(String.format("%.2f", (Double.parseDouble(input.getText().toString())+273.15)) + " Kelvin"));
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Wrong Icon", Toast.LENGTH_SHORT).show();
