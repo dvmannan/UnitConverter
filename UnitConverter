@@ -1,0 +1,89 @@
+package com.example.unitconverter;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ImageButton imageButton;
+        ImageButton imageButton2;
+        ImageButton imageButton3;
+        EditText input;
+        TextView textView;
+        TextView textView2;
+        TextView textView3;
+        Spinner spinner;
+
+        imageButton= findViewById(R.id.imageButton);
+        imageButton2= findViewById(R.id.imageButton2);
+        imageButton3= findViewById(R.id.imageButton3);
+        input= findViewById(R.id.input);
+        textView = findViewById(R.id.textView);
+        textView2 = findViewById(R.id.textView2);
+        textView3 = findViewById(R.id.textView3);
+        spinner= findViewById(R.id.spinner);
+
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.tags));
+        myAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner.setAdapter(myAdapter);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(spinner.getSelectedItemPosition()==0){
+                    Double convert = Double.parseDouble((input.getText().toString()));
+                    textView.setText(String.valueOf(String.format("%.2f", (Double.parseDouble(input.getText().toString())*100)) + " centimeters"));
+                    textView2.setText(String.valueOf(String.format("%.2f", (Double.parseDouble(input.getText().toString())*39.37)) + " inches"));
+                    textView3.setText(String.valueOf(String.format("%.2f", (Double.parseDouble(input.getText().toString())*3.28)) + " foot"));
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Wrong Icon", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        imageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(spinner.getSelectedItemPosition()==0)
+                {
+                    Double convert = Double.parseDouble((input.getText().toString()));
+                    textView.setText(String.valueOf(String.format("%.2f", (Double.parseDouble(input.getText().toString())*33.8)) + " Fahrenheit"));
+                    textView2.setText(String.valueOf(String.format("%.2f", (Double.parseDouble(input.getText().toString())*273.15)) + " Kelvin"));
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Wrong Icon", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(spinner.getSelectedItemPosition()==0){
+                    Double convert = Double.parseDouble((input.getText().toString()));
+                    textView.setText(String.valueOf(String.format("%.2f", (Double.parseDouble(input.getText().toString())*100)) + " centimeters"));
+                    textView2.setText(String.valueOf(String.format("%.2f", (Double.parseDouble(input.getText().toString())*39.37)) + " inches"));
+                    textView3.setText(String.valueOf(String.format("%.2f", (Double.parseDouble(input.getText().toString())*3.28)) + " foot"));
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Wrong Icon", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+}
